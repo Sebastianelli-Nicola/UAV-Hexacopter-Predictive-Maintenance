@@ -1,0 +1,6 @@
+=== REPORT KNN BINARIO (K=10) - ANOVA ===
+Validazione (5-Fold CV): 92.97%
+Accuratezza Test Set:    94.51%
+-----------------------------------
+Voli Sani:   80 (TN:79, FP:1)
+Voli Guasti: 193 (TP:179, FN:14)

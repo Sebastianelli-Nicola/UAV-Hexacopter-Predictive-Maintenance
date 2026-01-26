@@ -1,0 +1,6 @@
+=== REPORT NEURAL NETWORK BINARIO (ANOVA) ===
+Validazione (5-Fold CV): 92.66%
+Accuratezza Test Set:    95.60%
+-----------------------------------
+Voli Sani:   80 (TN:74, FP:6)
+Voli Guasti: 193 (TP:187, FN:6)

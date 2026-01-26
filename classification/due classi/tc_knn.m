@@ -3,14 +3,19 @@ clear all; clc; close all;
 
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
-% MODIFICA: Cartella specifica per KNN
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results\due classi\knn";
+% Cartella specifica per KNN (ANOVA)
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results\due classi\knn_anova";
 
-if ~exist(resultsPath, 'dir'), mkdir(resultsPath); end
+% Crea cartella se non esiste
+if ~exist(resultsPath, 'dir')
+    mkdir(resultsPath);
+    fprintf('Cartella creata: %s\n', resultsPath);
+end
 
-load(fullfile(inputPath, "data_selected_features.mat"), 'feature_Table_Train_Reduced', 'feature_Table_Test_Reduced');
+% Caricamento Dati ANOVA
+load(fullfile(inputPath, "data_selected_features_anova.mat"), 'feature_Table_Train_Reduced', 'feature_Table_Test_Reduced');
+
 responseVar = 'faultCode';
-
 X_Train = feature_Table_Train_Reduced(:, setdiff(feature_Table_Train_Reduced.Properties.VariableNames, responseVar));
 Y_Train = feature_Table_Train_Reduced.(responseVar);
 X_Test = feature_Table_Test_Reduced(:, setdiff(feature_Table_Test_Reduced.Properties.VariableNames, responseVar));
@@ -20,20 +25,32 @@ Y_Test = feature_Table_Test_Reduced.(responseVar);
 Y_Train = mergecats(Y_Train, {'5', '10'}, '1');
 Y_Test  = mergecats(Y_Test,  {'5', '10'}, '1');
 
-%% 2. TRAINING (KNN)
-fprintf('Addestramento KNN Binario (K=10)...\n');
+%% 2. TRAINING CON CROSS-VALIDATION (5-FOLD)
+fprintf('Addestramento KNN Binario (K=10) con 5-Fold CV...\n');
 rng(1);
 
-% MODIFICA: Uso di fitcknn invece di fitcensemble
-% 'NumNeighbors', 10: Medium KNN (bilanciato)
-% 'Standardize', 1: FONDAMENTALE per KNN (scala i dati)
-Model = fitcknn(X_Train, Y_Train, ...
+% 1. Modello Cross-Validato (per valutare la robustezza)
+KNN_CV_Model = fitcknn(X_Train, Y_Train, ...
+    'NumNeighbors', 10, ...
+    'Distance', 'euclidean', ...
+    'Standardize', 1, ...
+    'KFold', 5); % Attiva la CV
+
+% Calcolo accuratezza media sui 5 fold
+cv_accuracy = 1 - kfoldLoss(KNN_CV_Model);
+fprintf('Validazione (5-Fold) Accuracy: %.2f%%\n', cv_accuracy * 100);
+
+% 2. Modello Finale (Addestrato su TUTTO il training set per il test finale)
+fprintf('Addestramento modello finale...\n');
+Final_Model = fitcknn(X_Train, Y_Train, ...
     'NumNeighbors', 10, ...
     'Distance', 'euclidean', ...
     'Standardize', 1);
 
-Y_Test_Pred = predict(Model, X_Test);
+% Test su dati mai visti
+Y_Test_Pred = predict(Final_Model, X_Test);
 test_accuracy = sum(Y_Test_Pred == Y_Test) / length(Y_Test);
+fprintf('Test Set Accuracy:       %.2f%%\n', test_accuracy * 100);
 
 %% 3. MATRICE DI CONFUSIONE CON ETICHETTE MANUALI
 % Creiamo una figura grande (Stesso layout del codice precedente)
@@ -52,7 +69,7 @@ cm.FontColor = [0 0 0];
 cm.FontName = 'Arial';
 cm.FontSize = 12;
 
-% --- AGGIUNTA ETICHETTE (Stesse coordinate del tuo codice funzionante) ---
+% --- AGGIUNTA ETICHETTE ---
 annotation('textbox', [0.69, 0.057, 0.1, 0.05], 'String', 'TPR', ...
     'EdgeColor', 'none', 'HorizontalAlignment', 'center', 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k');
 annotation('textbox', [0.80, 0.057, 0.1, 0.05], 'String', 'FNR', ...
@@ -69,8 +86,11 @@ TN = C(1,1); FP = C(1,2); FN = C(2,1); TP = C(2,2);
 
 txtFile = fullfile(resultsPath, 'Report_Binary_KNN.txt');
 fid = fopen(txtFile, 'w');
-fprintf(fid, '=== REPORT KNN BINARIO (K=10) ===\n');
-fprintf(fid, 'Accuratezza: %.2f%%\n', test_accuracy*100);
-fprintf(fid, 'Voli Sani: %d (TN:%d, FP:%d)\n', TN+FP, TN, FP);
+fprintf(fid, '=== REPORT KNN BINARIO (K=10) - ANOVA ===\n');
+fprintf(fid, 'Validazione (5-Fold CV): %.2f%%\n', cv_accuracy*100);
+fprintf(fid, 'Accuratezza Test Set:    %.2f%%\n', test_accuracy*100);
+fprintf(fid, '-----------------------------------\n');
+fprintf(fid, 'Voli Sani:   %d (TN:%d, FP:%d)\n', TN+FP, TN, FP);
 fprintf(fid, 'Voli Guasti: %d (TP:%d, FN:%d)\n', TP+FN, TP, FN);
 fclose(fid);
+fprintf('Report salvato in: %s\n', txtFile);

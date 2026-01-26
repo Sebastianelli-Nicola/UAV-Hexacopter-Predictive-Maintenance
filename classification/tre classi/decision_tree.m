@@ -4,7 +4,7 @@ clear all; clc; close all;
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
 % Cartella specifica per 3 Classi / Decision Tree
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results\tre classi\decision_tree_prova2";
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results\tre classi\decision_tree_anova";
 
 % Crea cartella se non esiste
 if ~exist(resultsPath, 'dir')
@@ -12,7 +12,7 @@ if ~exist(resultsPath, 'dir')
     fprintf('Cartella creata: %s\n', resultsPath);
 end
 
-fileName = "data_selected_features.mat";
+fileName = "data_selected_features_anova.mat";
 fullDataPath = fullfile(inputPath, fileName);
 if ~isfile(fullDataPath), error('File non trovato: %s', fullDataPath); end
 
@@ -33,7 +33,7 @@ fprintf('\n--- Addestramento Albero Decisionale (3 Classi, 10-Fold CV) ---\n');
 rng(1); 
 
 Tree_CV_Model = fitctree(X_Train, Y_Train, ...
-    'KFold', 10, ...
+    'KFold', 5, ...
     'PredictorSelection', 'curvature', ... 
     'Surrogate', 'off');
 

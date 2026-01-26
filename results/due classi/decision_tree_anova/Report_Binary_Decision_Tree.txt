@@ -1,0 +1,6 @@
+=== REPORT DECISION TREE BINARIO (ANOVA) ===
+Validazione (5-Fold CV): 92.03%
+Test Set Accuracy:       93.04%
+-----------------------------------
+Voli Sani:   80 (TN:71, FP:9)
+Voli Guasti: 193 (TP:183, FN:10)

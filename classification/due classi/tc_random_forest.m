@@ -3,14 +3,19 @@ clear all; clc; close all;
 
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
-% MODIFICA: Cartella specifica per Random Forest
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results\due classi\random_forest";
+% Cartella specifica per Random Forest (ANOVA)
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results\due classi\random_forest_anova";
 
-if ~exist(resultsPath, 'dir'), mkdir(resultsPath); end
+% Crea cartella se non esiste
+if ~exist(resultsPath, 'dir')
+    mkdir(resultsPath);
+    fprintf('Cartella creata: %s\n', resultsPath);
+end
 
-load(fullfile(inputPath, "data_selected_features.mat"), 'feature_Table_Train_Reduced', 'feature_Table_Test_Reduced');
+% Caricamento dati ANOVA
+load(fullfile(inputPath, "data_selected_features_anova.mat"), 'feature_Table_Train_Reduced', 'feature_Table_Test_Reduced');
+
 responseVar = 'faultCode';
-
 X_Train = feature_Table_Train_Reduced(:, setdiff(feature_Table_Train_Reduced.Properties.VariableNames, responseVar));
 Y_Train = feature_Table_Train_Reduced.(responseVar);
 X_Test = feature_Table_Test_Reduced(:, setdiff(feature_Table_Test_Reduced.Properties.VariableNames, responseVar));
@@ -20,21 +25,35 @@ Y_Test = feature_Table_Test_Reduced.(responseVar);
 Y_Train = mergecats(Y_Train, {'5', '10'}, '1');
 Y_Test  = mergecats(Y_Test,  {'5', '10'}, '1');
 
-%% 2. TRAINING (Random Forest)
-fprintf('Addestramento Random Forest Binario (50 Alberi)...\n');
+%% 2. TRAINING CON CROSS-VALIDATION (5-FOLD)
+fprintf('Addestramento Random Forest Binario (50 Alberi) con 5-Fold CV...\n');
 rng(1);
 
-% Configurazione Random Forest:
-% Usiamo 'Bag' (Bootstrap Aggregating) che è la base del Random Forest.
-% Aumentiamo a 50 alberi per una maggiore robustezza statistica.
+% Configurazione Albero
 t = templateTree('Reproducible',true);
-Model = fitcensemble(X_Train, Y_Train, ...
+
+% 1. Modello Cross-Validato
+RF_CV_Model = fitcensemble(X_Train, Y_Train, ...
     'Method', 'Bag', ...
-    'NumLearningCycles', 50, ... % 50 alberi nella foresta
+    'NumLearningCycles', 50, ...
+    'Learners', t, ...
+    'KFold', 5); % Attiva la CV
+
+% Calcolo accuratezza media sui 5 fold
+cv_accuracy = 1 - kfoldLoss(RF_CV_Model);
+fprintf('Validazione (5-Fold) Accuracy: %.2f%%\n', cv_accuracy * 100);
+
+% 2. Modello Finale (Addestrato su TUTTO il training set per il test finale)
+fprintf('Addestramento modello finale...\n');
+Final_Model = fitcensemble(X_Train, Y_Train, ...
+    'Method', 'Bag', ...
+    'NumLearningCycles', 50, ...
     'Learners', t);
 
-Y_Test_Pred = predict(Model, X_Test);
+% Test su dati mai visti
+Y_Test_Pred = predict(Final_Model, X_Test);
 test_accuracy = sum(Y_Test_Pred == Y_Test) / length(Y_Test);
+fprintf('Test Set Accuracy:       %.2f%%\n', test_accuracy * 100);
 
 %% 3. MATRICE DI CONFUSIONE CON ETICHETTE MANUALI
 fig = figure('Name', 'Binary Random Forest Confusion Matrix', 'Color', [1 1 1], ...
@@ -69,8 +88,11 @@ TN = C(1,1); FP = C(1,2); FN = C(2,1); TP = C(2,2);
 
 txtFile = fullfile(resultsPath, 'Report_Binary_Random_Forest.txt');
 fid = fopen(txtFile, 'w');
-fprintf(fid, '=== REPORT RANDOM FOREST BINARIO ===\n');
-fprintf(fid, 'Accuratezza: %.2f%%\n', test_accuracy*100);
-fprintf(fid, 'Voli Sani: %d (TN:%d, FP:%d)\n', TN+FP, TN, FP);
+fprintf(fid, '=== REPORT RANDOM FOREST BINARIO (ANOVA) ===\n');
+fprintf(fid, 'Validazione (5-Fold CV): %.2f%%\n', cv_accuracy*100);
+fprintf(fid, 'Accuratezza Test Set:    %.2f%%\n', test_accuracy*100);
+fprintf(fid, '-----------------------------------\n');
+fprintf(fid, 'Voli Sani:   %d (TN:%d, FP:%d)\n', TN+FP, TN, FP);
 fprintf(fid, 'Voli Guasti: %d (TP:%d, FN:%d)\n', TP+FN, TP, FN);
 fclose(fid);
+fprintf('Report salvato in: %s\n', txtFile);

@@ -4,7 +4,7 @@ clear all; clc; close all;
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
 % Cartella specifica per Neural Network
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results\tre classi\neural_network_prova";
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results\tre classi\neural_network_anova";
 
 % Crea cartella se non esiste
 if ~exist(resultsPath, 'dir')
@@ -12,7 +12,7 @@ if ~exist(resultsPath, 'dir')
     fprintf('Cartella creata: %s\n', resultsPath);
 end
 
-fileName = "data_selected_features.mat";
+fileName = "data_selected_features_anova.mat";
 fullDataPath = fullfile(inputPath, fileName);
 if ~isfile(fullDataPath), error('File non trovato: %s', fullDataPath); end
 
