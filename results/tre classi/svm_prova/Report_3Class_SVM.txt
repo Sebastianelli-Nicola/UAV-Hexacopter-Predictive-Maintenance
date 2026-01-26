@@ -1,0 +1,13 @@
+=== REPORT SVM QUADRATICA (3 CLASSI) ===
+Accuratezza Globale: 94.51%
+--------------------------------------------
+ANALISI CLASSE "0" (NO GUASTO):
+ - Totale Voli Sani:       80
+ - Riconosciuti Sani:      75
+ - FALSI ALLARMI (Errori): 5 (6.25%)
+   NOTA: La SVM ha classificato 5 voli sani come guasti.
+
+DETTAGLIO MATRICE DI CONFUSIONE:
+Classe 0: 75/80 corretti (93.75%)
+Classe 5: 78/85 corretti (91.76%)
+Classe 10: 105/108 corretti (97.22%)

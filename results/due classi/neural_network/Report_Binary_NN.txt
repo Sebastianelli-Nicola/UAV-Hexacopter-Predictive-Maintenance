@@ -1,0 +1,4 @@
+=== REPORT NEURAL NETWORK BINARIO ===
+Accuratezza: 95.48%
+Voli Sani: 115 (TN:103, FP:12)
+Voli Guasti: 283 (TP:277, FN:6)

@@ -1,0 +1,18 @@
+=== REPORT NEURAL NETWORK (3 CLASSI) ===
+Accuratezza Globale: 95.48%
+--------------------------------------------
+ANALISI CLASSE "0" (NO GUASTO):
+ - Totale Voli Sani:       115
+ - Riconosciuti Sani:      108
+ - FALSI ALLARMI (Errori): 7 (6.09%)
+
+DETTAGLIO MATRICE DI CONFUSIONE:
+Classe 0: 108/115 corretti (93.91%)
+Classe 5: 117/124 corretti (94.35%)
+Classe 10: 155/159 corretti (97.48%)
+
+--------------------------------------------
+TOP 3 FEATURE PIU' IMPORTANTI (Explainability):
+1. FRM_1/vibe_y_stats/Mean (Score: 0.1158)
+2. FRM_1/vibe_y_stats/RMS (Score: 0.0981)
+3. FRM_1/vibe_y_stats/PeakValue (Score: 0.0755)

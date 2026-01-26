@@ -1,0 +1,4 @@
+=== REPORT SVM QUADRATICA BINARIA ===
+Accuratezza: 96.48%
+Voli Sani: 115 (TN:111, FP:4)
+Voli Guasti: 283 (TP:273, FN:10)

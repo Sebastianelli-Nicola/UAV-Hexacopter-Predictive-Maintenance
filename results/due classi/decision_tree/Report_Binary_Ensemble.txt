@@ -1,0 +1,4 @@
+=== REPORT ENSEMBLE BINARIO ===
+Accuratezza: 96.48%
+Voli Sani: 115 (TN:109, FP:6)
+Voli Guasti: 283 (TP:275, FN:8)

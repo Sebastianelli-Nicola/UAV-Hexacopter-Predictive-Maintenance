@@ -1,0 +1,13 @@
+=== REPORT ALBERO DECISIONALE (3 CLASSI) ===
+Accuratezza Globale: 89.01%
+--------------------------------------------
+ANALISI CLASSE "0" (NO GUASTO):
+ - Totale Voli Sani:       80
+ - Riconosciuti Sani:      63
+ - FALSI ALLARMI (Errori): 17 (21.25%)
+   NOTA: Il modello ha classificato 17 voli sani come guasti (5 o 10).
+
+DETTAGLIO MATRICE DI CONFUSIONE:
+Classe 0: 63/80 corretti (78.75%)
+Classe 5: 77/85 corretti (90.59%)
+Classe 10: 103/108 corretti (95.37%)

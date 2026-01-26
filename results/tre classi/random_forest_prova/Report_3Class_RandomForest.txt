@@ -1,0 +1,19 @@
+=== REPORT RANDOM FOREST (3 CLASSI) ===
+Accuratezza Globale: 94.51%
+--------------------------------------------
+ANALISI CLASSE "0" (NO GUASTO):
+ - Totale Voli Sani:       80
+ - Riconosciuti Sani:      74
+ - FALSI ALLARMI (Errori): 6 (7.50%)
+   NOTA: Il Random Forest ha classificato 6 voli sani come guasti.
+
+DETTAGLIO MATRICE DI CONFUSIONE:
+Classe 0: 74/80 corretti (92.50%)
+Classe 5: 77/85 corretti (90.59%)
+Classe 10: 107/108 corretti (99.07%)
+
+--------------------------------------------
+TOP 3 FEATURE PIU' IMPORTANTI (OOB):
+1. FRM_1/vibe_y_sigstats/RMS (Score: 1.1101)
+2. FRM_1/acc_x_sigstats/Mean (Score: 1.0440)
+3. FRM_1/vibe_y_sigstats/Mean (Score: 1.0308)
