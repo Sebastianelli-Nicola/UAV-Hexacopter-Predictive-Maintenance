@@ -147,7 +147,7 @@ fault_cat = categorical(fault');
 dataTable.faultCode(:) = fault_cat;
 
 %% Computation of Diagnostic Feature Designer features
-[feature_Table,data_feature_Table] = diagnosticFeaturesfull(dataTable);
+[feature_Table,data_feature_Table] = diagnosticFeaturesprova(dataTable);
 
 %% Clean features by removing NaNs from features
 feature_Table=standardizeMissing(feature_Table,{-Inf,Inf});
@@ -171,9 +171,9 @@ feature_Table_Train=feature_Table(idx_train,:);
 feature_Table_Test=feature_Table(idx_test,:);
 
 %% Save data and try to reload the feature table
-save data_feature_Table_zoh.mat dataTable data_feature_Table feature_Table feature_Table_Train feature_Table_Test
+save data_feature_Table_prova.mat dataTable data_feature_Table feature_Table feature_Table_Train feature_Table_Test
 clear all
-load data_feature_Table_zoh.mat
+load data_feature_Table_prova.mat
 
 %%
 classificationLearner(feature_Table_Train,'faultCode');
