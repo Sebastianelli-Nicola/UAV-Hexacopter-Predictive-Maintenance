@@ -1,0 +1,21 @@
+=== REPORT DECISION TREE - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 88.79 ± 3.35 %
+Miglior Modello Trovato: Split #7 (93.41%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  88.44%  |  Test Accuracy:  85.71%
+Split  2 -> CV Accuracy:  89.54%  |  Test Accuracy:  89.01%
+Split  3 -> CV Accuracy:  88.20%  |  Test Accuracy:  86.81%
+Split  4 -> CV Accuracy:  88.44%  |  Test Accuracy:  90.11%
+Split  5 -> CV Accuracy:  86.13%  |  Test Accuracy:  90.11%
+Split  6 -> CV Accuracy:  87.71%  |  Test Accuracy:  87.91%
+Split  7 -> CV Accuracy:  87.96%  |  Test Accuracy:  93.41%
+Split  8 -> CV Accuracy:  86.25%  |  Test Accuracy:  93.41%
+Split  9 -> CV Accuracy:  86.50%  |  Test Accuracy:  82.42%
+Split 10 -> CV Accuracy:  88.44%  |  Test Accuracy:  89.01%
+---------------------------------------------------
+ANALISI AGGREGATA SU 910 VOLI TOTALI (Somma di 10 Test Set)
+
+FALSI ALLARMI (Classe 0 predetta come Guasto):
+ - Su 272 casi "Sani" totali testati,
+ - 35 sono stati confusi (12.87% tasso errore medio)

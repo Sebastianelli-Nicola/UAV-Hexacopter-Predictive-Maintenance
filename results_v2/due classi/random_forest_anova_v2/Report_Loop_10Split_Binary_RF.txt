@@ -1,0 +1,34 @@
+=== REPORT RANDOM FOREST BINARIO - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 96.48 ± 1.54 %
+Miglior Modello Trovato: Split #5 (98.90%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  95.99%  |  Test Accuracy:  96.70%
+Split  2 -> CV Accuracy:  95.74%  |  Test Accuracy:  94.51%
+Split  3 -> CV Accuracy:  95.01%  |  Test Accuracy:  96.70%
+Split  4 -> CV Accuracy:  95.99%  |  Test Accuracy:  94.51%
+Split  5 -> CV Accuracy:  95.74%  |  Test Accuracy:  98.90%
+Split  6 -> CV Accuracy:  95.13%  |  Test Accuracy:  96.70%
+Split  7 -> CV Accuracy:  95.86%  |  Test Accuracy:  96.70%
+Split  8 -> CV Accuracy:  95.01%  |  Test Accuracy:  97.80%
+Split  9 -> CV Accuracy:  96.23%  |  Test Accuracy:  97.80%
+Split 10 -> CV Accuracy:  95.01%  |  Test Accuracy:  94.51%
+---------------------------------------------------
+ANALISI AGGREGATA SU 910 VOLI TOTALI (Somma di 10 Test Set)
+
+MATRICE DI CONFUSIONE SOMMATA:
+Voli Sani (Reali):   272 -> Riconosciuti: 257 (TN), Errati: 15 (FP)
+Voli Guasti (Reali): 638 -> Riconosciuti: 621 (TP), Errati: 17 (FN)
+
+METRICHE GLOBALI:
+ - Accuracy:    96.48%
+ - Sensitivity: 97.34% (Capacità di trovare i guasti)
+ - Specificity: 94.49% (Capacità di evitare falsi allarmi)
+ - F1-Score:    0.9749
+
+TOP 5 FEATURE PIU' IMPORTANTI (OOB IMPORTANCE):
+1. FRM_1/vibe_x_sigstats/RMS (Score: 1.2593)
+2. FRM_1/vibe_y_sigstats/RMS (Score: 1.0417)
+3. FRM_1/vibe_y_sigstats/Mean (Score: 0.9991)
+4. FRM_1/vibe_x_sigstats/Mean (Score: 0.9727)
+5. FRM_1/vibe_y_sigstats/PeakValue (Score: 0.9188)

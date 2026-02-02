@@ -1,0 +1,34 @@
+=== REPORT NEURAL NETWORK BINARIO - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 96.26 ± 2.02 %
+Miglior Modello Trovato: Split #7 (100.00%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  95.01%  |  Test Accuracy:  95.60%
+Split  2 -> CV Accuracy:  93.67%  |  Test Accuracy:  93.41%
+Split  3 -> CV Accuracy:  95.38%  |  Test Accuracy:  93.41%
+Split  4 -> CV Accuracy:  95.62%  |  Test Accuracy:  96.70%
+Split  5 -> CV Accuracy:  95.38%  |  Test Accuracy:  97.80%
+Split  6 -> CV Accuracy:  95.62%  |  Test Accuracy:  95.60%
+Split  7 -> CV Accuracy:  95.50%  |  Test Accuracy: 100.00%
+Split  8 -> CV Accuracy:  94.04%  |  Test Accuracy:  96.70%
+Split  9 -> CV Accuracy:  94.28%  |  Test Accuracy:  95.60%
+Split 10 -> CV Accuracy:  94.89%  |  Test Accuracy:  97.80%
+---------------------------------------------------
+ANALISI AGGREGATA SU 910 VOLI TOTALI (Somma di 10 Test Set)
+
+MATRICE DI CONFUSIONE SOMMATA:
+Voli Sani (Reali):   272 -> Riconosciuti: 254 (TN), Errati: 18 (FP)
+Voli Guasti (Reali): 638 -> Riconosciuti: 622 (TP), Errati: 16 (FN)
+
+METRICHE GLOBALI:
+ - Accuracy:    96.26%
+ - Sensitivity: 97.49% (Capacità di trovare i guasti)
+ - Specificity: 93.38% (Capacità di evitare falsi allarmi)
+ - F1-Score:    0.9734
+
+TOP 5 FEATURE PIU' IMPORTANTI (PERMUTATION IMPORTANCE):
+1. FRM_1/gyr_y_ps_spec/BandPower (Score: 0.1178)
+2. FRM_1/vibe_y_sigstats/PeakValue (Score: 0.1130)
+3. FRM_1/vibe_y_sigstats/Mean (Score: 0.0974)
+4. FRM_1/acc_y_ps_spec/BandPower (Score: 0.0825)
+5. FRM_1/vibe_x_sigstats/Mean (Score: 0.0724)

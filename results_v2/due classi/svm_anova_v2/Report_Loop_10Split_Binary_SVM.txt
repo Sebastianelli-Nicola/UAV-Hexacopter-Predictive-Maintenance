@@ -1,0 +1,27 @@
+=== REPORT SVM BINARIO - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 94.29 ± 2.53 %
+Miglior Modello Trovato: Split #7 (98.90%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  95.13%  |  Test Accuracy:  90.11%
+Split  2 -> CV Accuracy:  94.65%  |  Test Accuracy:  95.60%
+Split  3 -> CV Accuracy:  95.26%  |  Test Accuracy:  96.70%
+Split  4 -> CV Accuracy:  95.74%  |  Test Accuracy:  91.21%
+Split  5 -> CV Accuracy:  95.01%  |  Test Accuracy:  94.51%
+Split  6 -> CV Accuracy:  94.53%  |  Test Accuracy:  94.51%
+Split  7 -> CV Accuracy:  94.65%  |  Test Accuracy:  98.90%
+Split  8 -> CV Accuracy:  94.04%  |  Test Accuracy:  94.51%
+Split  9 -> CV Accuracy:  95.62%  |  Test Accuracy:  93.41%
+Split 10 -> CV Accuracy:  94.04%  |  Test Accuracy:  93.41%
+---------------------------------------------------
+ANALISI AGGREGATA SU 910 VOLI TOTALI (Somma di 10 Test Set)
+
+MATRICE DI CONFUSIONE SOMMATA:
+Voli Sani (Reali):   272 -> Riconosciuti: 247 (TN), Errati: 25 (FP)
+Voli Guasti (Reali): 638 -> Riconosciuti: 611 (TP), Errati: 27 (FN)
+
+METRICHE GLOBALI:
+ - Accuracy:    94.29%
+ - Sensitivity: 95.77% (Capacità di trovare i guasti)
+ - Specificity: 90.81% (Capacità di evitare falsi allarmi)
+ - F1-Score:    0.9592

@@ -1,0 +1,29 @@
+=== REPORT RANDOM FOREST (30 ALBERI) - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 93.96 ± 2.27 %
+Miglior Modello Trovato: Split #7 (97.80%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  94.16%  |  Test Accuracy:  93.41%
+Split  2 -> CV Accuracy:  94.04%  |  Test Accuracy:  92.31%
+Split  3 -> CV Accuracy:  94.16%  |  Test Accuracy:  91.21%
+Split  4 -> CV Accuracy:  94.65%  |  Test Accuracy:  92.31%
+Split  5 -> CV Accuracy:  93.43%  |  Test Accuracy:  95.60%
+Split  6 -> CV Accuracy:  92.94%  |  Test Accuracy:  92.31%
+Split  7 -> CV Accuracy:  93.67%  |  Test Accuracy:  97.80%
+Split  8 -> CV Accuracy:  93.92%  |  Test Accuracy:  95.60%
+Split  9 -> CV Accuracy:  93.92%  |  Test Accuracy:  96.70%
+Split 10 -> CV Accuracy:  94.04%  |  Test Accuracy:  92.31%
+---------------------------------------------------
+ANALISI AGGREGATA SU 910 VOLI TOTALI (Somma di 10 Test Set)
+
+FALSI ALLARMI (Classe 0 predetta come Guasto):
+ - Su 272 casi "Sani" totali testati,
+ - 12 sono stati confusi (4.41% tasso errore medio)
+
+---------------------------------------------------
+TOP 5 FEATURE PIU' IMPORTANTI (BEST MODEL):
+1. FRM_1/vibe_y_sigstats/Mean (Score: 1.4369)
+2. FRM_1/acc_x_ps_spec/BandPower (Score: 1.2234)
+3. FRM_1/vibe_y_sigstats/RMS (Score: 1.1641)
+4. FRM_1/acc_x_sigstats/Mean (Score: 1.1506)
+5. FRM_1/vibe_x_sigstats/RMS (Score: 1.0683)

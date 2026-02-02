@@ -1,0 +1,22 @@
+=== REPORT KNN (K=10) - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 91.54 ± 1.64 %
+Miglior Modello Trovato: Split #8 (94.51%)
+---------------------------------------------------
+ANALISI AGGREGATA SU 910 VOLI TOTALI (Somma di 10 Test Set)
+
+FALSI ALLARMI (Classe 0 predetta come Guasto):
+ - Su 272 casi "Sani" totali testati,
+ - 9 sono stati confusi (3.31% tasso errore medio)
+
+---------------------------------------------------
+DETTAGLIO PER SPLIT:
+Split 1 -> CV: 90.75% | Test: 91.21%
+Split 2 -> CV: 90.63% | Test: 91.21%
+Split 3 -> CV: 90.51% | Test: 90.11%
+Split 4 -> CV: 91.00% | Test: 93.41%
+Split 5 -> CV: 91.97% | Test: 90.11%
+Split 6 -> CV: 91.61% | Test: 90.11%
+Split 7 -> CV: 91.24% | Test: 93.41%
+Split 8 -> CV: 91.36% | Test: 94.51%
+Split 9 -> CV: 91.61% | Test: 90.11%
+Split 10 -> CV: 90.88% | Test: 91.21%
