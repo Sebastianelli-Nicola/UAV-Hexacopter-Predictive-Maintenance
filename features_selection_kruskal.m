@@ -4,7 +4,7 @@ clear all; clc; close all;
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
 % Cartella di destinazione (Versione v2 - Kruskal)
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\features_selection_kruskal_v2";
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\features_selection_kruskal_high_freq";
 
 % Crea la cartella se non esiste
 if ~exist(resultsPath, 'dir')
@@ -13,7 +13,7 @@ if ~exist(resultsPath, 'dir')
 end
 
 % Input file: Versione v2 (quella con i 10 split)
-fileName = "data_feature_Table_prova_v2.mat";
+fileName = "data_feature_Table_high_freq.mat";
 fullDataPath = fullfile(inputPath, fileName);
 
 if ~isfile(fullDataPath), error('File non trovato: %s', fullDataPath); end
@@ -94,7 +94,7 @@ fprintf('Numero totale feature selezionate: %d\n', num_final);
 disp(FinalTable);
 
 % Salvataggio CSV
-outputCSV = fullfile(resultsPath, 'Tabella_Finale_Features_Kruskal_v2.csv');
+outputCSV = fullfile(resultsPath, 'Tabella_Finale_Features_Kruskal_high_freq.csv');
 writetable(FinalTable, outputCSV);
 fprintf('[OK] Tabella CSV salvata in: %s\n', outputCSV);
 
@@ -110,7 +110,7 @@ ylabel('Chi-Square Statistic');
 grid on;
 
 % Salvataggio Immagine
-imgFile = fullfile(resultsPath, 'Feature_Selection_Kruskal_Scores_v2.png');
+imgFile = fullfile(resultsPath, 'Feature_Selection_Kruskal_Scores_high_freq.png');
 saveas(fig, imgFile);
 fprintf('[OK] Immagine grafico salvata in: %s\n', imgFile);
 
@@ -130,11 +130,11 @@ for s = 1:nSplits
 end
 
 % 1. Salvataggio in Results
-outputMatResults = fullfile(resultsPath, 'data_selected_features_kruskal_v2.mat');
+outputMatResults = fullfile(resultsPath, 'data_selected_features_kruskal_high_freq.mat');
 save(outputMatResults, 'feature_Table_Train_Reduced', 'feature_Table_Test_Reduced', 'FinalTable');
 
 % 2. Salvataggio in Dataset (Input Path) - Per l'uso nei classificatori successivi
-outputMatDataset = fullfile(inputPath, 'data_selected_features_kruskal_v2.mat');
+outputMatDataset = fullfile(inputPath, 'data_selected_features_kruskal_high_freq.mat');
 save(outputMatDataset, 'feature_Table_Train_Reduced', 'feature_Table_Test_Reduced');
 
 fprintf('[OK] Dataset ridotto (.mat) salvato con suffisso _kruskal_v2 in:\n 1. %s\n 2. %s\n', outputMatResults, outputMatDataset);

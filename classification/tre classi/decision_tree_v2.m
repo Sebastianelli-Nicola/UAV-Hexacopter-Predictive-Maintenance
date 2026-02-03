@@ -6,13 +6,13 @@ clear all; clc; close all;
 
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\tre classi\decision_tree_kruskal_v2";
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\tre classi\decision_tree_anova_high_freq";
 
 if ~exist(resultsPath, 'dir')
     mkdir(resultsPath);
 end
 
-fileName = "data_selected_features_kruskal_v2.mat";
+fileName = "data_selected_features_anova_high_freq.mat";
 fullDataPath = fullfile(inputPath, fileName);
 if ~isfile(fullDataPath), error('File non trovato: %s', fullDataPath); end
 

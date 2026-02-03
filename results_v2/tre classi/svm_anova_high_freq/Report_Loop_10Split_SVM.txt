@@ -1,0 +1,21 @@
+=== REPORT SVM QUADRATICA - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 92.12 ± 2.32 %
+Miglior Modello Trovato: Split #10 (96.21%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  90.38%  |  Test Accuracy:  93.18%
+Split  2 -> CV Accuracy:  90.96%  |  Test Accuracy:  92.42%
+Split  3 -> CV Accuracy:  90.04%  |  Test Accuracy:  90.91%
+Split  4 -> CV Accuracy:  90.96%  |  Test Accuracy:  92.42%
+Split  5 -> CV Accuracy:  90.21%  |  Test Accuracy:  91.67%
+Split  6 -> CV Accuracy:  90.63%  |  Test Accuracy:  87.88%
+Split  7 -> CV Accuracy:  90.21%  |  Test Accuracy:  90.15%
+Split  8 -> CV Accuracy:  91.30%  |  Test Accuracy:  91.67%
+Split  9 -> CV Accuracy:  90.29%  |  Test Accuracy:  94.70%
+Split 10 -> CV Accuracy:  90.88%  |  Test Accuracy:  96.21%
+---------------------------------------------------
+ANALISI AGGREGATA SU 1320 VOLI TOTALI (Somma di 10 Test Set)
+
+FALSI ALLARMI (Classe 0 predetta come Guasto):
+ - Su 383 casi "Sani" totali testati,
+ - 35 sono stati confusi (9.14% tasso errore medio)

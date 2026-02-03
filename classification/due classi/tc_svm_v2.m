@@ -4,7 +4,7 @@ clear all; clc; close all;
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
 % Cartella specifica per SVM Binaria v2 (Loop 10 Split)
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\due classi\svm_anova_v2";
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\due classi\svm_kruskal_high_freq";
 
 % Crea cartella se non esiste
 if ~exist(resultsPath, 'dir')
@@ -13,7 +13,7 @@ if ~exist(resultsPath, 'dir')
 end
 
 % Caricamento dati V2 (10 Split)
-fileName = "data_selected_features_anova_v2.mat";
+fileName = "data_selected_features_kruskal_high_freq.mat";
 fullDataPath = fullfile(inputPath, fileName);
 
 if ~isfile(fullDataPath), error('File non trovato: %s', fullDataPath); end

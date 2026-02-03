@@ -1,0 +1,29 @@
+=== REPORT NEURAL NETWORK (MEDIUM 25) - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 89.92 ± 2.42 %
+Miglior Modello Trovato: Split #9 (92.42%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  90.63%  |  Test Accuracy:  90.15%
+Split  2 -> CV Accuracy:  87.70%  |  Test Accuracy:  91.67%
+Split  3 -> CV Accuracy:  89.37%  |  Test Accuracy:  89.39%
+Split  4 -> CV Accuracy:  88.95%  |  Test Accuracy:  88.64%
+Split  5 -> CV Accuracy:  90.04%  |  Test Accuracy:  85.61%
+Split  6 -> CV Accuracy:  89.29%  |  Test Accuracy:  90.91%
+Split  7 -> CV Accuracy:  89.46%  |  Test Accuracy:  91.67%
+Split  8 -> CV Accuracy:  90.54%  |  Test Accuracy:  86.36%
+Split  9 -> CV Accuracy:  87.28%  |  Test Accuracy:  92.42%
+Split 10 -> CV Accuracy:  89.21%  |  Test Accuracy:  92.42%
+---------------------------------------------------
+ANALISI AGGREGATA SU 1320 VOLI TOTALI (Somma di 10 Test Set)
+
+FALSI ALLARMI (Classe 0 predetta come Guasto):
+ - Su 383 casi "Sani" totali testati,
+ - 43 sono stati confusi (11.23% tasso errore medio)
+
+---------------------------------------------------
+TOP 5 FEATURE PIU' IMPORTANTI (PERMUTATION IMPORTANCE):
+1. FRM_1/vibe_y_sigstats/RMS (Score: 0.2504)
+2. FRM_1/vibe_y_sigstats/Mean (Score: 0.1892)
+3. FRM_1/vibe_x_sigstats/Mean (Score: 0.1667)
+4. FRM_1/vibe_x_sigstats/PeakValue (Score: 0.1595)
+5. FRM_1/pwm_2_sigstats/ShapeFactor (Score: 0.1440)

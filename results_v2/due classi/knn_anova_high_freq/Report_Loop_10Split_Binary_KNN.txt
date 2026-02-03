@@ -1,0 +1,27 @@
+=== REPORT KNN BINARIO (K=10) - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 93.18 ± 1.68 %
+Miglior Modello Trovato: Split #9 (95.45%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  93.31%  |  Test Accuracy:  93.18%
+Split  2 -> CV Accuracy:  93.47%  |  Test Accuracy:  94.70%
+Split  3 -> CV Accuracy:  93.56%  |  Test Accuracy:  92.42%
+Split  4 -> CV Accuracy:  93.81%  |  Test Accuracy:  93.94%
+Split  5 -> CV Accuracy:  92.97%  |  Test Accuracy:  94.70%
+Split  6 -> CV Accuracy:  93.64%  |  Test Accuracy:  90.91%
+Split  7 -> CV Accuracy:  93.56%  |  Test Accuracy:  90.15%
+Split  8 -> CV Accuracy:  93.14%  |  Test Accuracy:  93.18%
+Split  9 -> CV Accuracy:  92.89%  |  Test Accuracy:  95.45%
+Split 10 -> CV Accuracy:  93.47%  |  Test Accuracy:  93.18%
+---------------------------------------------------
+ANALISI AGGREGATA SU 1320 VOLI TOTALI (Somma di 10 Test Set)
+
+MATRICE DI CONFUSIONE SOMMATA:
+Voli Sani (Reali):   383 -> Riconosciuti: 364 (TN), Errati: 19 (FP)
+Voli Guasti (Reali): 937 -> Riconosciuti: 866 (TP), Errati: 71 (FN)
+
+METRICHE GLOBALI:
+ - Accuracy:    93.18%
+ - Sensitivity: 92.42% (Capacità di trovare i guasti)
+ - Specificity: 95.04% (Capacità di evitare falsi allarmi)
+ - F1-Score:    0.9506
