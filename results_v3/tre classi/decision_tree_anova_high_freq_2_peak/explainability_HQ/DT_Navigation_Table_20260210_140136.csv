@@ -1,0 +1,52 @@
+Regola_Num,Condizione_Check,Se_VERO_Vai_A,Se_FALSO_Vai_A
+1,FRM_1/vibe_y_sigstats/PeakValue < 1.7935,Vai a Regola 2,Vai a Regola 3
+2,FRM_1/vibe_x_sigstats/PeakValue < 1.9051,Vai a Regola 4,Vai a Regola 5
+3,FRM_1/vibe_y_sigstats/RMS < 1.5515,Vai a Regola 6,Vai a Regola 7
+4,FRM_1/vibe_y_sigstats/PeakValue < 1.4227,Vai a Regola 8,Vai a Regola 9
+5,FRM_1/vibe_y_sigstats/RMS < 1.5310,Vai a Regola 10,Vai a Regola 11
+6,FRM_1/vibe_x_sigstats/RMS < 1.8702,Vai a Regola 12,CLASSE: 10
+7,FRM_1/acc_x_sigstats/Mean < 0.2174,Vai a Regola 13,Vai a Regola 14
+8,FRM_1/acc_x_sigstats/Mean < 0.0992,Vai a Regola 15,Vai a Regola 16
+9,FRM_1/vibe_x_sigstats/PeakValue < 1.6377,Vai a Regola 17,Vai a Regola 18
+10,FRM_1/vibe_x_sigstats/RMS < 1.6352,Vai a Regola 19,Vai a Regola 20
+11,FRM_1/acc_x_sigstats/Mean < -0.0828,CLASSE: 10,CLASSE: 5
+12,FRM_1/pwm_1_sigstats/ClearanceFactor < 1.0921,Vai a Regola 21,CLASSE: 0
+13,FRM_1/acc_x_sigstats/Mean < -0.0928,Vai a Regola 22,Vai a Regola 23
+14,FRM_1/pwm_5_sigstats/Std < 56.9447,CLASSE: 5,CLASSE: 10
+15,FRM_1/vibe_y_sigstats/PeakValue < 1.2542,Vai a Regola 24,Vai a Regola 25
+16,FRM_1/vibe_y_sigstats/RMS < 0.7830,Vai a Regola 26,Vai a Regola 27
+17,FRM_1/vibe_z_sigstats/Mean < 1.0858,Vai a Regola 28,Vai a Regola 29
+18,FRM_1/pwm_5_sigstats/ClearanceFactor < 1.0619,Vai a Regola 30,CLASSE: 0
+19,FRM_1/vibe_y_sigstats/PeakValue < 1.3063,Vai a Regola 31,Vai a Regola 32
+20,FRM_1/pwm_1_sigstats/ClearanceFactor < 1.0377,CLASSE: 5,Vai a Regola 33
+21,FRM_1/vibe_x_sigstats/PeakValue < 1.4066,CLASSE: 0,CLASSE: 5
+22,FRM_1/acc_x_sigstats/Mean < -0.2574,CLASSE: 10,Vai a Regola 34
+23,FRM_1/pwm_5_sigstats/ClearanceFactor < 1.0359,CLASSE: 10,Vai a Regola 35
+24,FRM_1/acc_y_ps_spec/PeakAmp2 < 0.0010,Vai a Regola 36,CLASSE: 5
+25,FRM_1/pwm_5_sigstats/Std < 27.9306,Vai a Regola 37,Vai a Regola 38
+26,FRM_1/pwm_5_sigstats/ClearanceFactor < 1.0517,CLASSE: 5,CLASSE: 0
+27,FRM_1/acc_y_ps_spec/PeakAmp2 < 0.0004,Vai a Regola 39,CLASSE: 5
+28,FRM_1/acc_x_sigstats/Mean < 0.2421,CLASSE: 0,CLASSE: 5
+29,FRM_1/vibe_z_sigstats/PeakValue < 1.4850,Vai a Regola 40,CLASSE: 0
+30,FRM_1/vibe_x_sigstats/RMS < 1.5832,Vai a Regola 41,CLASSE: 10
+31,FRM_1/pwm_1_sigstats/Std < 19.1363,Vai a Regola 42,Vai a Regola 43
+32,FRM_1/pwm_5_sigstats/Std < 41.5530,CLASSE: 5,CLASSE: 0
+33,FRM_1/vibe_y_sigstats/RMS < 1.4110,CLASSE: 5,Vai a Regola 44
+34,FRM_1/vibe_z_sigstats/Mean < 1.2414,CLASSE: 10,Vai a Regola 45
+35,FRM_1/pwm_5_sigstats/ClearanceFactor < 1.0864,CLASSE: 10,Vai a Regola 46
+36,FRM_1/vibe_z_sigstats/Mean < 0.6899,CLASSE: 5,CLASSE: 0
+37,FRM_1/vibe_x_sigstats/PeakValue < 1.6311,CLASSE: 0,CLASSE: 5
+38,FRM_1/vibe_y_sigstats/Mean < 1.1921,CLASSE: 0,CLASSE: 5
+39,FRM_1/vibe_y_sigstats/Mean < 0.9069,Vai a Regola 47,Vai a Regola 48
+40,FRM_1/pwm_1_sigstats/ClearanceFactor < 1.0481,CLASSE: 5,CLASSE: 0
+41,FRM_1/acc_y_ps_spec/PeakAmp2 < 0.0008,CLASSE: 5,CLASSE: 10
+42,FRM_1/pwm_5_sigstats/ClearanceFactor < 1.0313,CLASSE: 0,CLASSE: 5
+43,FRM_1/vibe_y_sigstats/Mean < 0.7197,CLASSE: 5,Vai a Regola 49
+44,FRM_1/acc_x_sigstats/Mean < -0.1103,CLASSE: 10,CLASSE: 5
+45,FRM_1/vibe_z_sigstats/RMS < 1.2552,CLASSE: 5,Vai a Regola 50
+46,FRM_1/pwm_1_sigstats/ClearanceFactor < 1.0381,CLASSE: 5,CLASSE: 10
+47,FRM_1/pwm_1_sigstats/Std < 20.0449,CLASSE: 0,CLASSE: 5
+48,FRM_1/vibe_x_sigstats/Mean < 1.3973,CLASSE: 0,CLASSE: 5
+49,FRM_1/acc_x_sigstats/Mean < 0.0721,CLASSE: 0,CLASSE: 5
+50,FRM_1/acc_y_ps_spec/PeakAmp2 < 0.0008,Vai a Regola 51,CLASSE: 10
+51,FRM_1/acc_y_ps_spec/PeakAmp2 < 0.0007,CLASSE: 10,CLASSE: 5

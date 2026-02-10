@@ -4,7 +4,7 @@ clear all; clc; close all;
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
 % Cartella specifica per KNN v2 (Loop 10 Split)
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\tre classi\knn_anova_high_freq";
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v3\tre classi\knn_kruskal_high_freq_2_peak";
 
 % Crea cartella se non esiste
 if ~exist(resultsPath, 'dir')
@@ -13,7 +13,7 @@ if ~exist(resultsPath, 'dir')
 end
 
 % Caricamento dati V2 (10 Split)
-fileName = "data_selected_features_anova_high_freq.mat";
+fileName = "data_selected_features_kruskal_high_freq_2_peak.mat";
 fullDataPath = fullfile(inputPath, fileName);
 
 if ~isfile(fullDataPath), error('File non trovato: %s', fullDataPath); end

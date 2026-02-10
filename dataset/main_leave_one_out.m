@@ -148,7 +148,7 @@ dataTable.faultCode(:) = fault_cat;
 
 %% Computation of Diagnostic Feature Designer features
 %%[feature_Table,data_feature_Table] = diagnosticFeaturesprova(dataTable);
-[feature_Table,data_feature_Table] = diagnosticFeaturesHighFreq(dataTable);
+[feature_Table,data_feature_Table] = diagnosticFeaturesHighFreq2Peak(dataTable);
 
 %% Clean features by removing NaNs from features
 feature_Table=standardizeMissing(feature_Table,{-Inf,Inf});
@@ -184,12 +184,12 @@ for i = 1:nSplits
 end
 %% Save data and try to reload the feature table
 %save data_feature_Table_prova.mat dataTable data_feature_Table feature_Table feature_Table_Train feature_Table_Test
-save data_feature_Table_high_freq.mat ...
+save data_feature_Table_high_freq_2_peak.mat ...
      dataTable data_feature_Table feature_Table ...
      feature_Table_Train feature_Table_Test cv_splits
 
 clear all
-load data_feature_Table_high_freq.mat
+load data_feature_Table_high_freq_2_peak.mat
 
 %% Avvio Classification Learner
 % Nota: passiamo solo il primo split ({1}) perché l'app accetta solo una tabella alla volta.

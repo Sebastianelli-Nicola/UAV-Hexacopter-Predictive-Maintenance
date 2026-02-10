@@ -3,8 +3,11 @@ clear all; clc; close all;
 
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
-% Percorso dove hai salvato il modello (dallo script precedente)
-modelPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\tre classi\neural_network_anova_v2";
+
+% NOTA: Ho messo il percorso che appariva nel tuo ultimo errore. 
+% Se il modello è altrove, modifica questa riga.
+modelPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\tre classi\neural_network_anova_high_freq";
+
 % Cartella output per l'Explainability
 explainPath = fullfile(modelPath, "explainability_surrogate");
 
@@ -21,17 +24,26 @@ fprintf('Caricamento Modello Migliore...\n');
 load(modelFile, 'Best_Model', 'best_split_idx', 'best_test_acc');
 
 % --- CARICAMENTO DATASET ---
-% Carichiamo lo stesso file dati usato per il training
-dataFile = "data_selected_features_anova_v2.mat";
+dataFile = "data_selected_features_anova_high_freq.mat";
 fullDataPath = fullfile(inputPath, dataFile);
 if ~isfile(fullDataPath), error('Dataset non trovato: %s', fullDataPath); end
 fprintf('Caricamento Dataset...\n');
 load(fullDataPath, 'feature_Table_Train_Reduced');
 
 % --- RECUPERO DATI DELLO SPLIT MIGLIORE ---
-% Dobbiamo usare esattamente gli stessi dati su cui il modello "best" ha performato bene
 fprintf('Recupero dati dal Best Split #%d (Acc: %.2f%%)...\n', best_split_idx, best_test_acc*100);
 TrainTbl = feature_Table_Train_Reduced{best_split_idx};
+
+% --- CORREZIONE CRITICA: RIMOZIONE NaN ---
+% Le reti neurali e gli alberi possono fallire se ci sono NaN (valori mancanti)
+% generati da divisioni per zero nelle feature (es. ClearanceFactor su segnale piatto).
+num_before = height(TrainTbl);
+TrainTbl = rmmissing(TrainTbl); 
+num_after = height(TrainTbl);
+
+if num_before > num_after
+    fprintf('ATTENZIONE: Rimosse %d righe contenenti NaN per evitare errori.\n', num_before - num_after);
+end
 
 responseVar = 'faultCode';
 % Estrazione Feature (X)
@@ -53,8 +65,7 @@ end
 fprintf('Addestramento Albero Surrogato (White Box)... \n');
 
 % Parametri per l'interpretabilità:
-% - MaxNumSplits: 20-30 nodi max per mantenerlo leggibile (se troppo grande non spiega nulla)
-% - PredictorNames: Per vedere i nomi delle feature nel grafico
+% - MaxNumSplits: 20-30 nodi max per mantenerlo leggibile
 Surrogate_Tree = fitctree(X_Train, Y_Pred_NN, ...
     'PredictorNames', X_Train.Properties.VariableNames, ...
     'MaxNumSplits', 20, ... 
@@ -83,22 +94,18 @@ fprintf('Generazione grafico albero...\n');
 % 1. Chiudiamo tutte le figure aperte per pulizia
 close all; 
 
-% 2. Usiamo 'view'. 
-% NOTA: Non creiamo 'fig = figure(...)' prima, perché 'view' apre automaticamente
-% una nuova finestra dedicata. Se ne creassimo una noi, rimarrebbe vuota.
+% 2. Usiamo 'view' in modalità graph. 
+% Questo apre una NUOVA finestra dedicata al grafico dell'albero.
 view(Surrogate_Tree, 'Mode', 'graph'); 
 
-% 3. Catturiamo l'handle della figura appena creata da 'view'
-fig = gcf; % gcf = "Get Current Figure"
+% 3. Catturiamo l'handle della figura appena aperta da view
+fig = gcf; 
 
 % 4. Aggiustiamo il titolo sulla figura corrente
-% (Usiamo 'findall' per essere sicuri di scrivere sopra il grafico)
 title(sprintf('Modello Surrogato della Neural Network (Fidelity: %.2f%%)', fidelity*100));
 
 % 5. Salvataggio Immagine
 imgFile = fullfile(explainPath, 'Surrogate_Tree_Graph.png');
-
-% Salviamo usando l'handle 'fig' catturato
 saveas(fig, imgFile);
 fprintf('Grafico Albero Surrogato salvato in: %s\n', imgFile);
 
@@ -117,6 +124,7 @@ fprintf(fid, '---------------------------------------------------\n');
 fprintf(fid, '\nVISUALIZZAZIONE TESTUALE DELLE REGOLE:\n\n');
 
 % Cattura l'output visuale dell'albero per scriverlo nel file
+% Usiamo evalc per catturare ciò che view stamperebbe nella command window
 tree_text = evalc('view(Surrogate_Tree)'); 
 fprintf(fid, '%s', tree_text);
 

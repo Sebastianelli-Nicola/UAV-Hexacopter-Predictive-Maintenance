@@ -1,0 +1,29 @@
+=== REPORT NEURAL NETWORK (MEDIUM 25) - 10 SPLIT AGGREGATI ===
+Accuracy Media Test: 91.82 ± 2.57 %
+Miglior Modello Trovato: Split #2 (94.70%)
+---------------------------------------------------
+DETTAGLIO PERFORMANCE PER OGNI SPLIT:
+Split  1 -> CV Accuracy:  90.13%  |  Test Accuracy:  93.18%
+Split  2 -> CV Accuracy:  89.46%  |  Test Accuracy:  94.70%
+Split  3 -> CV Accuracy:  90.79%  |  Test Accuracy:  90.91%
+Split  4 -> CV Accuracy:  90.63%  |  Test Accuracy:  89.39%
+Split  5 -> CV Accuracy:  91.88%  |  Test Accuracy:  90.15%
+Split  6 -> CV Accuracy:  89.87%  |  Test Accuracy:  93.18%
+Split  7 -> CV Accuracy:  89.87%  |  Test Accuracy:  93.94%
+Split  8 -> CV Accuracy:  91.88%  |  Test Accuracy:  86.36%
+Split  9 -> CV Accuracy:  90.38%  |  Test Accuracy:  93.18%
+Split 10 -> CV Accuracy:  90.46%  |  Test Accuracy:  93.18%
+---------------------------------------------------
+ANALISI AGGREGATA SU 1320 VOLI TOTALI (Somma di 10 Test Set)
+
+FALSI ALLARMI (Classe 0 predetta come Guasto):
+ - Su 383 casi "Sani" totali testati,
+ - 32 sono stati confusi (8.36% tasso errore medio)
+
+---------------------------------------------------
+TOP 5 FEATURE PIU' IMPORTANTI (PERMUTATION IMPORTANCE):
+1. FRM_1/vibe_y_sigstats/RMS (Score: 0.1664)
+2. FRM_1/vibe_y_sigstats/Mean (Score: 0.1276)
+3. FRM_1/vibe_y_sigstats/PeakValue (Score: 0.1148)
+4. FRM_1/gyr_x_ps_spec/PeakAmp2 (Score: 0.0836)
+5. FRM_1/vibe_x_sigstats/PeakValue (Score: 0.0762)

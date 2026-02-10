@@ -4,7 +4,7 @@ clear all; clc; close all;
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
 % Cartella di destinazione (Versione v2)
-resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v2\features_selection_anova_high_freq";
+resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v3\features_selection_anova_high_freq_2_peak";
 
 % Crea la cartella se non esiste
 if ~exist(resultsPath, 'dir')
@@ -13,7 +13,7 @@ if ~exist(resultsPath, 'dir')
 end
 
 % Input file: Versione v2 (quella con i 10 split)
-fileName = "data_feature_Table_high_freq.mat";
+fileName = "data_feature_Table_high_freq_2_peak.mat";
 fullDataPath = fullfile(inputPath, fileName);
 
 if ~isfile(fullDataPath), error('File non trovato: %s', fullDataPath); end
@@ -84,7 +84,7 @@ fprintf('Numero totale feature selezionate: %d\n', num_final);
 disp(FinalTable);
 
 % Salvataggio CSV con nome v2
-outputCSV = fullfile(resultsPath, 'Tabella_Finale_Features_ANOVA_high_freq.csv');
+outputCSV = fullfile(resultsPath, 'Tabella_Finale_Features_ANOVA_high_freq_2_peak.csv');
 writetable(FinalTable, outputCSV);
 fprintf('[OK] Tabella CSV salvata in: %s\n', outputCSV);
 
@@ -119,11 +119,11 @@ for s = 1:nSplits
 end
 
 % 1. Salvataggio in Results (con nome v2)
-outputMatResults = fullfile(resultsPath, 'data_selected_features_anova_high_freq.mat');
+outputMatResults = fullfile(resultsPath, 'data_selected_features_anova_high_freq_2_peak.mat');
 save(outputMatResults, 'feature_Table_Train_Reduced', 'feature_Table_Test_Reduced', 'FinalTable');
 
 % 2. Salvataggio in Dataset (con nome v2) - CRUCIALE PER I PROSSIMI SCRIPT
-outputMatDataset = fullfile(inputPath, 'data_selected_features_anova_high_freq.mat');
+outputMatDataset = fullfile(inputPath, 'data_selected_features_anova_high_freq_2_peak.mat');
 save(outputMatDataset, 'feature_Table_Train_Reduced', 'feature_Table_Test_Reduced');
 
 fprintf('[OK] Dataset ridotto (.mat) salvato con suffisso v2 in:\n 1. %s\n 2. %s\n', outputMatResults, outputMatDataset);
