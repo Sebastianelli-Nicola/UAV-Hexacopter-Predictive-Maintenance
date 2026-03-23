@@ -1,6 +1,0 @@
-=== REPORT LIME PER IL VOLO #1 ===
-Classe Reale: 0 | Predetta: 5
-
-FEATURE CHE HANNO SPINTO VERSO LA CLASSE PREDETTA:
-(Le barre nel grafico indicano peso e direzione del contributo)
-

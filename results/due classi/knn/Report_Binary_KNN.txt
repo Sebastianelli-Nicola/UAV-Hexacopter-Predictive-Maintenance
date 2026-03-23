@@ -1,4 +1,0 @@
-=== REPORT KNN BINARIO (K=10) ===
-Accuratezza: 95.48%
-Voli Sani: 115 (TN:110, FP:5)
-Voli Guasti: 283 (TP:270, FN:13)

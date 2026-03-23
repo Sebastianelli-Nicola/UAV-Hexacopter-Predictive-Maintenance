@@ -3,7 +3,7 @@ clear all; clc; close all;
 
 % --- PERCORSI ---
 inputPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\dataset"; 
-% Cartella di destinazione (Versione v2 - Kruskal)
+% Cartella di destinazione (Versione - Kruskal)
 resultsPath = "C:\Users\seba9\Documents\MATLAB\ProgettoDrone\results_v3\features_selection_kruskal_high_freq_2_peak";
 
 % Crea la cartella se non esiste
@@ -12,7 +12,7 @@ if ~exist(resultsPath, 'dir')
     fprintf('Cartella risultati creata: %s\n', resultsPath);
 end
 
-% Input file: Versione v2 (quella con i 10 split)
+% Input file: Versione (quella con i 10 split)
 fileName = "data_feature_Table_high_freq_2_peak.mat";
 fullDataPath = fullfile(inputPath, fileName);
 
@@ -85,7 +85,7 @@ num_final = length(final_list);
 FinalTable = table(final_list, final_scores, ...
     'VariableNames', {'Feature_Name', 'Score_ChiSq'});
 
-%% 5. OUTPUT E SALVATAGGIO CSV (Versione v2 Kruskal)
+%% 5. OUTPUT E SALVATAGGIO CSV (Versione  Kruskal)
 clc;
 fprintf('================================================================\n');
 fprintf('      TABELLA FEATURES FINALE (KRUSKAL-WALLIS TOP 20)           \n');
@@ -98,7 +98,7 @@ outputCSV = fullfile(resultsPath, 'Tabella_Finale_Features_Kruskal_high_freq_2_p
 writetable(FinalTable, outputCSV);
 fprintf('[OK] Tabella CSV salvata in: %s\n', outputCSV);
 
-%% 6. GRAFICO PUNTEGGI (Versione v2 Kruskal)
+%% 6. GRAFICO PUNTEGGI (Versione Kruskal)
 fig = figure('Name', 'Feature Scores Kruskal', 'Color', 'w', 'Position', [100, 100, 1000, 600]);
 
 bar(final_scores);
@@ -114,7 +114,7 @@ imgFile = fullfile(resultsPath, 'Feature_Selection_Kruskal_Scores_high_freq_2_pe
 saveas(fig, imgFile);
 fprintf('[OK] Immagine grafico salvata in: %s\n', imgFile);
 
-%% 7. CREAZIONE E SALVATAGGIO DATASET RIDOTTO (.mat v2)
+%% 7. CREAZIONE E SALVATAGGIO DATASET RIDOTTO (.mat)
 fprintf('\nGenerazione dataset ridotti per TUTTI i 10 split...\n');
 
 varsToKeep = [final_list; responseVar];

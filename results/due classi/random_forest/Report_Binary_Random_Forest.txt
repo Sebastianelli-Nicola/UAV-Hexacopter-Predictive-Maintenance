@@ -1,4 +1,0 @@
-=== REPORT RANDOM FOREST BINARIO ===
-Accuratezza: 96.98%
-Voli Sani: 115 (TN:110, FP:5)
-Voli Guasti: 283 (TP:276, FN:7)

@@ -1,4 +1,0 @@
-=== REPORT NAIVE BAYES BINARIO ===
-Accuratezza: 83.17%
-Voli Sani: 115 (TN:97, FP:18)
-Voli Guasti: 283 (TP:234, FN:49)
